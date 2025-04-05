@@ -96,6 +96,9 @@ const LoginPage = () => {
       const isAdmin = formData.email.toLowerCase() === 'admin@voteswift.com' && 
                      formData.password === 'Admin@VoteSwift2025!';
       
+      // Clear previous session data
+      localStorage.clear();
+
       // Log authentication attempt
       console.log('Authentication attempt:', { email: formData.email, isAdmin });
 
@@ -107,7 +110,7 @@ const LoginPage = () => {
         localStorage.setItem('adminLoginAttempts', '0');
         localStorage.removeItem('adminLastAttemptTime');
         console.log('Admin login successful');
-        navigate('/admin');
+        navigate('/admin', { replace: true });
       } else {
         // Update appropriate login attempts counter
         const attemptsKey = isAdminAttempt ? 'adminLoginAttempts' : 'loginAttempts';
@@ -123,9 +126,11 @@ const LoginPage = () => {
         // Mock voter authentication
         localStorage.setItem('userRole', 'voter');
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('username', formData.email.split('@')[0]);
         localStorage.setItem('loginAttempts', '0');
         localStorage.removeItem('lastAttemptTime');
-        navigate('/dashboard');
+        console.log('Voter login successful');
+        navigate('/dashboard', { replace: true });
       }
     } catch (error) {
       setError('An error occurred during login. Please try again.');
@@ -317,8 +322,7 @@ const LoginPage = () => {
           </Paper>
         </Container>
       </Box>
-  );
-{'}'};
+
 
     </Container>
     </>

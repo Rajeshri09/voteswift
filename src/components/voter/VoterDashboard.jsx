@@ -29,7 +29,7 @@ const VoterDashboard = () => {
       startDate: '2025-04-01T09:00:00',
       endDate: '2025-04-15T18:00:00',
       totalVotes: 156,
-      candidates: 3,
+      candidates: 5,
       hasVoted: false
     },
     {
@@ -40,7 +40,7 @@ const VoterDashboard = () => {
       startDate: '2025-04-20T09:00:00',
       endDate: '2025-04-25T18:00:00',
       totalVotes: 0,
-      candidates: 5,
+      candidates: 3,
       hasVoted: false
     }
   ]);
